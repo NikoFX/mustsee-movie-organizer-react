@@ -65,7 +65,7 @@ function App() {
         <div className="container">
             <nav className="nav">
                 <div className="wrapper">
-                    <div className="logo" onClick={showAside}><img src={'./src/assets/movie_logo.webp'} alt="logo" className="logo__img" />MustSee</div>
+                    <div className="logo" onClick={showAside}><img src={'./public/assets/movie_logo.webp'} alt="logo" className="logo__img" />MustSee</div>
                     <div className="menu">
                         <div className="menu__search">
                             <input type="text" className="menu__search-input" onChange={searchHandle} />
