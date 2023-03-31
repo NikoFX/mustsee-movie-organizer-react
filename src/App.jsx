@@ -84,7 +84,7 @@ function App() {
                 <div className="wrapper">
                     <Routes>
                         <Route path='collection/:id' element={<Collection />} />
-                        <Route path='*' element={<Movies />} />
+                        <Route path='/' element={<Movies />} />
                     </Routes>
                 </div>
             </div>
