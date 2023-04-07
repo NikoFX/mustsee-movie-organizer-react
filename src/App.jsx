@@ -8,6 +8,8 @@ import Movies from './Movies'
 import Collection from './Collection'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
+import movieLogo from './assets/movie_logo.webp'
+
 function App() {
 
     const [asideBtnMode, setAsideBtnMode] = useState('Add to collection')
@@ -45,7 +47,7 @@ function App() {
 
         setAsideBtnMode('')
         const newMovies = favoriteList.map(m => m.imdbID)
-        fetch('https://acb-api.algoritmika.org/api/movies/list', {
+        fetch('https://expressjs-movie-organizer-api.vercel.app/collection', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -56,7 +58,7 @@ function App() {
             })
         })
             .then(res => res.json())
-            .then(d => { setCollectionID(d.id) })
+            .then(d => {console.log(d); setCollectionID(d.id) })
             .finally(() => setAsideBtnMode('Go to collection'))
     }
 
@@ -65,7 +67,7 @@ function App() {
         <div className="container">
             <nav className="nav">
                 <div className="wrapper">
-                    <div className="logo" onClick={showAside}><img src={'./src/assets/movie_logo.webp'} alt="logo" className="logo__img" />MustSee</div>
+                    <div className="logo"><img src={movieLogo} alt="logo" className="logo__img" />MustSee</div>
                     <div className="menu">
                         <div className="menu__search">
                             <input type="text" className="menu__search-input" onChange={searchHandle} />
