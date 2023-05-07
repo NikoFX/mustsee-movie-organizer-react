@@ -17,11 +17,15 @@ function Collection() {
 
     return (
         <>
-            <ul>
-                {list?.map(movie => (
-                    <li key={movie.imdbID}>{movie.Title}</li>
-                ))}
-            </ul>
+            <div className="row-collection">
+                <div className="favorites">
+                    {list?.map(movie => (
+                        <div className="fav-movie-card" key={movie.imdbID}>
+                            <img src={movie.Poster} alt="img" className="fav-movie-card__img" />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </>
     )
 }

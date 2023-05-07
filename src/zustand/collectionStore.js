@@ -7,7 +7,7 @@ const collectionStore = create(set => ({
             .then(res => res.json())
             .then(data => {
                 data.movie.forEach(imdbID => {
-                    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=278924d5`)
+                    fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=${import.meta.env.VITE_API_KEY}`)
                         .then(res => res.json())
                         .then(data => {
                             set(state => {

@@ -1,14 +1,16 @@
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
-import { Badge, Checkbox, CircularProgress } from '@mui/material'
+import { Badge, Button, Checkbox, CircularProgress } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import moviesStore from './zustand/moviesStore'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import Movies from './Movies'
 import Collection from './Collection'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 
 import movieLogo from './assets/movie_logo.webp'
+import Description from './Description'
 
 function App() {
 
@@ -28,9 +30,18 @@ function App() {
         fetchMovies()
     }, [])
 
-    const showAside = () => {
+    const handleStopPropagation = (e) => {
+        e.stopPropagation()
+    }
+
+    const handleOpenAside = () => {
         asideRef.current.style = 'display:block;right:0;'
     }
+
+    const handleCloseAside = () => {
+        asideRef.current.style = 'right:-400px;'
+    }
+
 
     const searchHandle = (e) => {
         fetchMovies(e.target.value)
@@ -58,25 +69,24 @@ function App() {
             })
         })
             .then(res => res.json())
-            .then(d => {console.log(d); setCollectionID(d.id) })
+            .then(d => { console.log(d); setCollectionID(d.id) })
             .finally(() => setAsideBtnMode('Go to collection'))
     }
-
 
     return (
         <div className="container">
             <nav className="nav">
                 <div className="wrapper">
-                    <div className="logo"><img src={movieLogo} alt="logo" className="logo__img" />MustSee</div>
+                    <Link to={'/'} className='logo-link'><div className="logo"><img src={movieLogo} alt="logo" className="logo__img" />MustSee</div></Link>
                     <div className="menu">
                         <div className="menu__search">
                             <input type="text" className="menu__search-input" onChange={searchHandle} />
-                            <SearchRoundedIcon/>
+                            <SearchRoundedIcon />
                         </div>
                         <a href="" className="menu__link">My collection</a>
                         <div className="menu__link">
-                            <Badge badgeContent={favoriteList.length} color="secondary" title="Favorite list" placement="bottom">
-                                <Favorite id='movie-card__badge-icon' onClick={showAside} />
+                            <Badge badgeContent={favoriteList.length} color="secondary" title="Favorite list" placement="bottom" onClick={handleStopPropagation}>
+                                <Favorite id='movie-card__badge-icon' onClick={handleOpenAside} />
                             </Badge>
                         </div>
                     </div>
@@ -87,10 +97,18 @@ function App() {
                     <Routes>
                         <Route path='collection/:id' element={<Collection />} />
                         <Route path='/' element={<Movies />} />
+                        <Route path='description/:imdbID' element={<Description />} />
                     </Routes>
                 </div>
             </div>
             <div className="aside" ref={asideRef}>
+                <Button
+                    color='secondary'
+                    sx={{minWidth: '0'}}
+                    onClick={handleCloseAside}
+                >
+                    <CloseRoundedIcon/>
+                </Button>
                 <div className="aside__main">
                     <h3 className="aside__header">
                         Favorite movies
@@ -110,7 +128,7 @@ function App() {
                     <button type='submit' className="aside__btn">{asideBtnMode ? asideBtnMode : <CircularProgress color="secondary" />}</button>
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 

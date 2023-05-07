@@ -4,7 +4,7 @@ const moviesStore = create(set => ({
     movies: [],
     favoriteList: [],
     fetchMovies: async (keys) => {
-        fetch(`https://www.omdbapi.com/?s=${keys ? keys : 'galaxy'}&apikey=278924d5&page=1`)
+        fetch(`https://www.omdbapi.com/?s=${keys ? keys : 'galaxy'}&apikey=${import.meta.env.VITE_API_KEY}&page=1`)
             .then(res => res.json())
             .then((data) => {
                 set(state => {
