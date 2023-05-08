@@ -22,6 +22,8 @@ Movie App
 
 A mini movie app that uses the OMDB API to display movie information and allows users to create a list of their favorite movies. The app is built using React JS, Zustand for state management, MUI for styling.
 
+Used API's: search movies [API](https://www.omdbapi.com/), create an favorite [movie organizer API](https://github.com/NikoFX/express-movie-organizer-API)
+
 ![](header.png)
 
 ## Development setup
