@@ -16,6 +16,9 @@ Movie App
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+- npm
+- node js
+- react js, react-router-dom, zustand, MUI
 
 A mini movie app that uses the OMDB API to display movie information and allows users to create a list of their favorite movies. The app is built using React JS, Zustand for state management, MUI for styling.
 
