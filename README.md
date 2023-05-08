@@ -3,6 +3,8 @@ Movie App
 
 
  ## [Demo](https://mustsee-movie-organizer-react.vercel.app/)
+ 
+ ![](header.png)
 
 
 ## Tools
@@ -24,7 +26,6 @@ A mini movie app that uses the OMDB API to display movie information and allows 
 
 Used API's: search movies [API](https://www.omdbapi.com/), create an favorite [movie organizer API](https://github.com/NikoFX/express-movie-organizer-API)
 
-![](header.png)
 
 ## Development setup
 
